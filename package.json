@@ -1,0 +1,19 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Вычислитель отличий",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bakinsky",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
