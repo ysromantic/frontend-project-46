@@ -4,7 +4,8 @@
   "description": "Вычислитель отличий",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Bakinsky",
@@ -18,9 +19,6 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "eslint": "^9.20.0",
-    "globals": "^15.14.0",
     "jest": "^29.7.0"
   }
 }
