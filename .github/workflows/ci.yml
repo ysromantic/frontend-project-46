@@ -1,4 +1,4 @@
-name: Node CI
+name: Node.js CI
 
 on:
   push:
@@ -8,7 +8,7 @@ env:
   CI: true
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,18 +26,18 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: make install
+        run: npm ci
 
       - name: Run linter
-        run: make lint
+        run: npm run lint
 
-      - name: Run tests
-        run: make test
+      - name: Run tests with coverage
+        run: npm run test-coverage
 
-      - name: Test & publish code coverage
+      - name: Upload coverage to CodeClimate
         uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: make test
+          coverageCommand: cat coverage/lcov.info
           debug: true
