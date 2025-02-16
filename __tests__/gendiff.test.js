@@ -1,19 +1,15 @@
-import { fileURLToPath } from 'url';
+import fs from 'fs';
 import path from 'path';
-import { readFileSync } from 'fs';
 import genDiff from '../src/gendiff.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const getFixturePath = (name) => path.resolve(process.cwd(), '__fixtures__', name);
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readJsonFixture = (filename) => JSON.parse(readFileSync(getFixturePath(filename), 'utf-8'));
+test('gendiff with flat JSON (string output)', () => {
+    const file1Path = getFixturePath('file1.json');
+    const file2Path = getFixturePath('file2.json');
+    const expected = fs.readFileSync(getFixturePath('expected.txt'), 'utf-8').trim();
 
-test('gendiff with flat JSON', () => {
-    const file1 = getFixturePath('file1.json');
-    const file2 = getFixturePath('file2.json');
-    const expected = readJsonFixture('expected.json');
+    const result = genDiff(file1Path, file2Path);
 
-    const result = JSON.parse(genDiff(file1, file2));
-    expect(result).toEqual(expected);
+    expect(result.trim()).toBe(expected);
 });

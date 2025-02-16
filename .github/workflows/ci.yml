@@ -1,14 +1,11 @@
-name: Node.js CI
+name: gendiff
 
 on:
   push:
   pull_request:
 
-env:
-  CI: true
-
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,18 +23,19 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: make install
 
       - name: Run linter
-        run: npm run lint
+        run: make lint
 
-      - name: Run tests with coverage
-        run: npm run test-coverage
+      - name: Run tests
+        run: make test
 
       - name: Upload coverage to CodeClimate
         uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          NODE_OPTIONS: --experimental-vm-modules
         with:
-          coverageCommand: cat coverage/lcov.info
+          coverageCommand: make test-coverage
           debug: true
