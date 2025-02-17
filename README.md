@@ -6,6 +6,10 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ead8761e325e45e7bc57/test_coverage)](https://codeclimate.com/github/ysromantic/frontend-project-46/test_coverage)
 
-### Сравнение плоских файлов
+### Сравнение плоских JSON файлов
 
 <a href="https://asciinema.org/a/74Hm7HV5QBftJXQLVag1SnOmS" target="_blank"><img src="https://asciinema.org/a/74Hm7HV5QBftJXQLVag1SnOmS.svg" /></a>
+
+### Сравнение плоских YAML файлов
+
+<a href="https://asciinema.org/a/QrafiPYq4DJ92UmjVsx1bteMZ" target="_blank"><img src="https://asciinema.org/a/QrafiPYq4DJ92UmjVsx1bteMZ.svg" /></a>
